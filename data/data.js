@@ -5,6 +5,8 @@ function addUser (userData) {
     fs.readFile("./data/users.json", function (err, data) {
         if (err) throw err;
         const users = JSON.parse(data);
+        userData.id = users.at(-1).id + 1;
+        userData.created_at = (new Date()).toISOString();
         users.push(userData);
         fs.writeFile("./data/users.json", JSON.stringify(users), function (err) {
             if (err) throw err;
@@ -19,6 +21,7 @@ function editUser (userData) {
         const users = JSON.parse(data);
         let userIndex;
         if ((userIndex = users.findIndex((element) => element.id === userData.id)) !== -1) {
+            userData.created_at = users[userIndex].created_at;
             users[userIndex] = userData;
             fs.writeFile("./data/users.json", JSON.stringify(users), function (err) {
                 if (err) throw err;

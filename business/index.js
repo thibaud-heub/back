@@ -4,7 +4,7 @@ const data = require("../data/data.js");
 const createError = require("http-errors");
 
 const inputsKeys = ["id", "first", "last", "email", "company", "country", "created_at"];
-const inputsPatterns = ["[A-Z][A-Za-z-]*", "[A-Z][A-Za-z-]*", "[a-z0-9-_.]+@([a-z0-9]+\\.)+[a-z]{2,4}", "[A-Z][A-Za-z0-9-' ]*", "[A-Z][A-Za-z-' ]*"];
+const inputsPatterns = ["^[A-Z][A-Za-z-]*$", "^[A-Z][A-Za-z-]*$", "^[a-z0-9-_.]+@([a-z0-9]+\\.)+[a-z]{2,4}$", "^[A-Z][A-Za-z0-9-' ]*$", "^[A-Z][A-Za-z-' ]*$"];
 
 /* GET users. */
 router.get("/", function (req, res, next) {
