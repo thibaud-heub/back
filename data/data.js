@@ -6,7 +6,6 @@ function addUser (userData) {
         if (err) throw err;
         const users = JSON.parse(data);
         users.push(userData);
-        console.log(users);
         fs.writeFile("./data/users.json", JSON.stringify(users), function (err) {
             if (err) throw err;
         });
@@ -21,7 +20,6 @@ function editUser (userData) {
         let userIndex;
         if ((userIndex = users.findIndex((element) => element.id === userData.id)) !== -1) {
             users[userIndex] = userData;
-            console.log(users);
             fs.writeFile("./data/users.json", JSON.stringify(users), function (err) {
                 if (err) throw err;
             });
@@ -37,7 +35,6 @@ function deleteUser (id) {
         let userIndex;
         if ((userIndex = users.findIndex((element) => element.id === id)) !== -1) {
             users.splice(userIndex, 1);
-            console.log(users);
             fs.writeFile("./data/users.json", JSON.stringify(users), function (err) {
                 if (err) throw err;
             });
